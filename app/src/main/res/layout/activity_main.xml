@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:elevation="0dp">
+        app:elevation="@dimen/elevation">
 
         <TextView
             android:id="@+id/title"
@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:minHeight="?actionBarSize"
-            android:padding="16dp"
+            android:padding="@dimen/toolbar_padding"
             android:text="@string/developers_life"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:textColor="@color/black" />
@@ -29,7 +29,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/min_margin"
             app:tabIndicator="@drawable/back_round"
             app:tabIndicatorAnimationMode="elastic"
             app:tabIndicatorColor="@color/black"

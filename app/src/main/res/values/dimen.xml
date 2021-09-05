@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_padding">16dp</dimen>
+    <dimen name="toast_padding">10dp</dimen>
+    <dimen name="min_margin">5dp</dimen>
+    <dimen name="big_margin">10dp</dimen>
+    <dimen name="bottom_margin">80dp</dimen>
+    <dimen name="elevation">0dp</dimen>
+    <dimen name="toast_elevation">5dp</dimen>
+    <dimen name="message_size">20sp</dimen>
+    <dimen name="description_size">14sp</dimen>
+</resources>

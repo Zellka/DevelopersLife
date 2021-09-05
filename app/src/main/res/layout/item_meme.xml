@@ -15,8 +15,8 @@
         android:id="@+id/text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/big_margin"
         android:textColor="@color/black"
-        android:textSize="14dp" />
+        android:textSize="@dimen/description_size" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
