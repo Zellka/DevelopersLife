@@ -33,6 +33,11 @@ class MemeFragment : Fragment() {
             .into(binding.imageMeme)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         fun newInstance(meme: Meme): MemeFragment {
             val args = Bundle()

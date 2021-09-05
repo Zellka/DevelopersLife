@@ -26,6 +26,6 @@ open class BaseRepository{
         val response = call.invoke()
         if(response.isSuccessful) return Result.Success(response.body()!!)
 
-        return Result.Error(IOException("Error Occurred during getting safe Api result, Custom ERROR - $errorMessage"))
+        return Result.Error(IOException("Error Occurred during getting safe Api result, ERROR - $errorMessage"))
     }
 }
