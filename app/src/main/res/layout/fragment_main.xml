@@ -5,72 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="80dp"
-        tools:ignore="MissingConstraints" />
+        app:swipeRefreshLayoutProgressSpinnerBackgroundColor="@color/black">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/black"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+
+        </FrameLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ImageButton
         android:id="@+id/btn_prev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        app:elevation="0dp"
-        android:src="@drawable/ic_arrow_back"
         android:background="@color/white"
+        android:src="@drawable/ic_arrow_back"
+        app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_refresh"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/btn_next"
-        app:elevation="0dp"
-        android:src="@drawable/ic_arrow_next"
-        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:background="@color/white"
+        android:src="@drawable/ic_arrow_next"
+        app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_prev"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_refresh"
         tools:ignore="MissingConstraints" />
-
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btn_prev"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:text="@string/prev"-->
-<!--        app:elevation="0dp"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/btn_next"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/fragment_container"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btn_next"-->
-<!--        app:elevation="0dp"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:text="@string/next"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/btn_prev"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/fragment_container"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

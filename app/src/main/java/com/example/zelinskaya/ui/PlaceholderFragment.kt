@@ -40,19 +40,15 @@ class PlaceholderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (isNetworkConnected()) {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.swipeRefresh.setOnRefreshListener {
+            binding.progressBar.visibility = View.INVISIBLE
             showMeme()
-        } else {
-            Toast.makeText(
-                context,
-                context?.resources?.getString(R.string.no_internet_connection),
-                Toast.LENGTH_SHORT
-            ).show()
-
+            binding.swipeRefresh.isRefreshing = false
         }
+        showMeme()
 
         binding.btnPrev.isEnabled = false
-
         binding.btnPrev.setOnClickListener {
             if (memeIndex > 0) {
                 memeIndex--
@@ -86,20 +82,29 @@ class PlaceholderFragment : Fragment() {
     }
 
     private fun showMeme() {
-        memeViewModel.getData()
-        memeViewModel.memesMutableLiveData.observe(
-            viewLifecycleOwner,
-            { postModels ->
-                memeList = postModels
-                if (memeList.size > 0) {
-                    replaceFragment(memeList, memeIndex)
+        if (isNetworkConnected()) {
+            memeViewModel.getData()
+            memeViewModel.memesMutableLiveData.observe(
+                viewLifecycleOwner,
+                { postModels ->
+                    memeList = postModels
+                    if (memeList.size > 0) {
+                        replaceFragment(memeList, memeIndex)
+                    }
                 }
-            }
-        )
+            )
+        } else {
+            Toast.makeText(
+                context,
+                context?.resources?.getString(R.string.no_internet_connection),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun isNetworkConnected(): Boolean {
-        val connectivityManager = this.context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            this.context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetworkInfo
         return activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting
