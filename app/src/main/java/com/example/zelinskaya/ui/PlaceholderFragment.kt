@@ -3,9 +3,12 @@ package com.example.zelinskaya.ui
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -72,11 +75,7 @@ class PlaceholderFragment : Fragment() {
                     binding.btnPrev.isEnabled = true
                 }
             } else {
-                Toast.makeText(
-                    context,
-                    context?.resources?.getString(R.string.try_later),
-                    Toast.LENGTH_SHORT
-                ).show()
+                showMessage(R.string.try_later, R.drawable.ic_error)
             }
         }
     }
@@ -94,12 +93,23 @@ class PlaceholderFragment : Fragment() {
                 }
             )
         } else {
-            Toast.makeText(
-                context,
-                context?.resources?.getString(R.string.no_internet_connection),
-                Toast.LENGTH_SHORT
-            ).show()
+            binding.progressBar.visibility = View.INVISIBLE
+            showMessage(R.string.no_internet_connection, R.drawable.ic_internet_error)
         }
+    }
+
+    private fun showMessage(message: Int, image: Int) {
+        val layout: View = this.layoutInflater.inflate(R.layout.layout_error, null)
+        val text = layout.findViewById<View>(R.id.text_error) as TextView
+        val img = layout.findViewById<View>(R.id.img_error) as ImageView
+        text.text = context?.resources?.getString(message)
+        text.width = 900
+        img.setImageResource(image)
+        Toast(context).apply {
+            duration = Toast.LENGTH_LONG
+            view = layout
+            setGravity(Gravity.TOP, 0, 0)
+        }.show()
     }
 
     private fun isNetworkConnected(): Boolean {
